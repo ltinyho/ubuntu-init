@@ -3,6 +3,24 @@
 
 系统设置 -> 软件和更新 -> 下载至  改为 http://mirrors.aliyun.com/ubuntu
 
+```bash
+cp /etc/apt/sources.list /etc/apt/sources.list.bak
+# 修改为阿里云的镜像源
+cat > /etc/apt/sources.list << END
+deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted
+# deb-src http://security.ubuntu.com/ubuntu xenial-security main restricted
+deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe
+# deb-src http://security.ubuntu.com/ubuntu xenial-security universe
+deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse
+# deb-src http://security.ubuntu.com/ubuntu xenial-security multiverse
+END
+
+# 更新源列表信息
+apt-get update
+```
+
+
+
 ### 更新
 ````
 sudo apt-get update
